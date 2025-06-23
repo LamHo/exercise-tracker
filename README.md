@@ -1,3 +1,4 @@
-# Exercise Tracker
+To run this application, navigate to the root directory, where package.json is located, then run the following commands:
 
-This is the boilerplate for the Exercise Tracker project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/exercise-tracker
++ npm install   
++ npm run start
