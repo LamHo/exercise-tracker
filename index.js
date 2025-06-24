@@ -72,7 +72,6 @@ app.post("/api/users/:_id/exercises", async function(req, res){
 app.get("/api/users/:_id/logs", async function(req, res){
   try { 
     let user = await User.findById(req.params._id);
-    //let exercisesCount = await Exercise.countDocuments({userId: req.params._id});
     let exercisesQuery = Exercise.find({userId: req.params._id});
     if (req.query.from) {
       exercisesQuery.find({date: {$gte: new Date(req.query.from)}});
@@ -83,9 +82,9 @@ app.get("/api/users/:_id/logs", async function(req, res){
     if (req.query.limit) {
       exercisesQuery.limit(Number(req.query.limit));
     }
-    let exercises = await exercisesQuery;
-    
+    let exercises = await exercisesQuery;    
     let exercisesCount = exercises.length;
+    
     return res.json({
       username: user.username,
       count: exercisesCount,
@@ -98,13 +97,10 @@ app.get("/api/users/:_id/logs", async function(req, res){
         }
       })
     })
-
   } catch (err) {
     console.error(err);
     res.json(err);
   }
-
-
 })
 
 
